@@ -36,6 +36,8 @@ productos.forEach(producto => {
     console.log(mensajeFiltrar);
 });
 
+
+// buscamos los productos le pasamos un parametro
 const buscadorDeProductos = (productoEntrada) => {
     const buscarProducto = productos.find(producto => producto.nombre === productoEntrada);
     // console.log(buscarProducto);
@@ -46,6 +48,7 @@ const buscadorDeProductos = (productoEntrada) => {
     }
 }
 
+// filtramos por un precio de entrada
 const filtrarPorUnPrecio = (precioEntrada) => {
     const filtrarPrecio = productos.filter(producto => producto.precio <= precioEntrada);
     console.log('Los productos menores o iguales a', precioEntrada, 'son ', filtrarPrecio);
