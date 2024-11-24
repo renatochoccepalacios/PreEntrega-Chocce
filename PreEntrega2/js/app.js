@@ -1,7 +1,4 @@
-// creamos el array carrito
-// const carrito = [];
-
-class producto {
+class Producto {
     constructor(nombre = '', precio = 0, cantidad = 0, envioGratis,  precioEnvio = 0) {
         this.nombre = nombre;
         this.precio = parseFloat(precio);
@@ -24,48 +21,35 @@ class producto {
         }
     }
 }
-// creamos los productos
-/* const producto1 = new producto('Monitor 20 pulgadas', 200, 1, true, 0);
-const producto2 = new producto('Zapatillas Nike', 500, 3, false, 100);
-const producto3 = new producto('Zapatillas Jordan', 1000, 4, false, 400);
-const producto4 = new producto('Camiseta de boca', 100, 1, true, 0); */
 
 const productos = [
-    new producto('Monitor 20 pulgadas', 200, 1, true, 0),
-    new producto('Zapatillas Nike', 500, 3, false, 100),
-    new producto('Zapatillas Jordan', 1000, 4, false, 400),
-    new producto('Camiseta de boca', 100, 1, true, 0)
+    new Producto('Monitor 20 pulgadas', 200, 1, true, 0),
+    new Producto('Zapatillas Nike', 500, 3, false, 100),
+    new Producto('Zapatillas Jordan', 1000, 4, false, 400),
+    new Producto('Camiseta de boca', 100, 1, true, 0)
 ]
-
-
-
-// llamamos a la funcion total
-/* console.log(producto1.total())
-console.log(producto2.total()) */
-
-// agregamos los productos al array
-/* carrito.push(producto1);
-carrito.push(producto2);
-carrito.push(producto3);
-carrito.push(producto4); */
-
-// vemos el carrito
-// console.log(carrito);
 
 
 // iteramos el carrito
 productos.forEach(producto => {
-    console.log(producto.nombre);
-    console.log(producto.precio);
-    console.log(producto.cantidad);
+    const mensajeFiltrar = `Nombre de producto ${producto.nombre}, precio: ${producto.precio}, cantidad: ${producto.cantidad}`;
+    console.log(mensajeFiltrar);
 });
 
+const buscadorDeProductos = (productoEntrada) => {
+    const buscarProducto = productos.find(producto => producto.nombre === productoEntrada);
+    // console.log(buscarProducto);
+    if(buscarProducto) {
+        console.log('producto encontrado! ', buscarProducto);
+    } else {
+        console.log(`Producto no encontrado`);
+    }
+}
 
-// buscamos un producto
-const buscarProducto = productos.find(producto => producto.nombre === 'Zapatillas Nike');
-console.log(buscarProducto);
+const filtrarPorUnPrecio = (precioEntrada) => {
+    const filtrarPrecio = productos.filter(producto => producto.precio <= precioEntrada);
+    console.log('Los productos menores o iguales a', precioEntrada, 'son ', filtrarPrecio);
+}
 
-// filtramos todos los productos menores 0  iguales a 500
-const filtrarMenorPrecio = productos.filter( producto => producto.precio <= 500);
-
-console.log('productos menores a 500: ', filtrarMenorPrecio);
+filtrarPorUnPrecio(200);
+buscadorDeProductos('Zapatillas Nike');
